@@ -8,8 +8,9 @@ class PriceProperties extends Properties("penny-properties") {
   private val PENNY_MAX = 99
   property("valid-pennies") = forAll (priceGenerator, priceGenerator) {
        (p1: Price, p2: Price) =>
-         Price.add(p1, p2).penny.value < PENNY_MAX
+         Price.add(p1, p2).penny.value <= PENNY_MAX
     }
+
   import eu.timepit.refined._
   import eu.timepit.refined.auto._
 
